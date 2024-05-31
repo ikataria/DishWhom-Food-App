@@ -70,7 +70,7 @@ const Body = () => {
           placeholder="Search your restaurant here..."
         />
         <button
-          className="search-btn"
+          className="search-btn btn"
           onClick={() => {
             const searchRest = restaurantList.filter((e) =>
               e.info.name.toLowerCase().includes(searchInput)
