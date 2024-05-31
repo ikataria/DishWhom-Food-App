@@ -169,11 +169,25 @@ html {
   cursor: pointer;
 }
 
+.nav-items li:hover{
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 8px;
+}
+
 .login-btn{
-  padding: 0 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  /* background-color: inherit; */
+  /* background-color: var(--dark-red); */
+  font-size: 18px;
+}
+
+.login-btn:hover{
+  background-color: var(--dark-red);
+  color: var(--white);
+  border-radius: 8px;
 }
 
 /* || BODY */

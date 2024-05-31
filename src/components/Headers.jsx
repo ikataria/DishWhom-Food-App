@@ -18,7 +18,7 @@ const Header = () => {
           />
         </div>
         <div className="nav-items-container">
-          <ul className="nav-items">
+          <ul className="nav-items regular-text">
             <li>
               <Link to="/">Home</Link></li>
             <li>
@@ -29,9 +29,11 @@ const Header = () => {
             <li>
               <Link to="/cart">🛒Cart</Link>
             </li>
+            
             <button className="login-btn" onClick={()=>{
               loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login")  
             }}>{loginBtn}</button>
+            
           </ul>
         </div>
       </div>

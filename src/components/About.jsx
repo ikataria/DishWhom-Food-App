@@ -3,17 +3,25 @@ import burgerImage from "../utils/images/burgerImage.png";
 import { useState } from "react";
 
 const About = () => {
-  const [profileVisibility, setProfileVisibility] = useState("");
+  let [profileVisibility, setProfileVisibility] = useState(true);
+  let [btnTxt, setBtnTxt] = useState("Hide Profile");
+
+  const toggleVisibility = () => {
+    btnTxt === "Show Profile" ? setBtnTxt("Hide Profile") : setBtnTxt("Show Profile")
+    setProfileVisibility(!profileVisibility);
+  };
 
   return (
     <div className="about-container-main">
       {/* Profile Section */}
       <div className="about-container-profile">
         <div className="profile-btn">
-          <button className="btn">My Profile</button>
+          <button className="btn" onClick={toggleVisibility}>
+           {btnTxt}
+          </button>
         </div>
 
-        <div className="profile-container-main">
+        {profileVisibility && (<div className="profile-container-main" id="profile-container-main">
           <div className="profile-container shadow-box-inset">
             <div className="profile-card">
               <h3 className="heading-main">About Me</h3>
@@ -31,18 +39,21 @@ const About = () => {
               <div className="social-media-container">
                 <a
                   className="linkedIn-link icon-fa"
+                  target="__blank"
                   href="https://www.linkedin.com/in/imohitkataria/"
                 >
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
                 <a
                   className="twitter-link icon-fa"
+                  target="__blank"
                   href="https://x.com/imohitkataria/"
                 >
                   <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a
                   className="github-link icon-fa"
+                  target="__blank"
                   href="https://github.com/ikataria"
                 >
                   <i className="fa-brands fa-github"></i>
@@ -89,7 +100,7 @@ const About = () => {
               #NamasteReact #NamasteJavascript
             </p>
           </div>
-        </div>
+        </div>)}
       </div>
 
       {/* Static Section : Text & Img*/}
