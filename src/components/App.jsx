@@ -17,7 +17,7 @@ import Error from "./Error";
 // Home Page - AppLayout
 const AppLayout = () => {
   return (
-    <div className="AppLayout">
+    <div className="AppLayout AppLayout-wrapper">
       <Header />
       <Outlet />
       <Footer />

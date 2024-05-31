@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-/************************************ Assignment 4 ************************************/
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +8,22 @@
   /* font-weight: 500; */
   font-style: normal;
 }
+
+body, html{
+  height: 100%;
+}
+
+/* App layout */
+.AppLayout-wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.about-container-main, .contact-container{
+  flex: 1
+}
+
 
 img {
   display: block;
@@ -176,12 +191,14 @@ html {
 }
 
 .login-btn{
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  /* background-color: inherit; */
-  /* background-color: var(--dark-red); */
+  background-color: var(--orange);
   font-size: 18px;
+  padding: 0 20px ;
+  color: #fff;
+  font-weight: 700;
 }
 
 .login-btn:hover{
@@ -307,7 +324,6 @@ p {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  
 }
 
 .profile-container{
@@ -449,9 +465,15 @@ p {
   /* width: 45%; */
 }
 
+/* Contact Page */
+.container-container{
+  
+}
+
 /* || FOOTER */
 .footer-container {
   padding: 5px 0;
+  height: 50px;
 }
 
 .footer-container hr {
