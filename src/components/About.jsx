@@ -75,7 +75,7 @@ const About = () => {
                 Namaste-React
               </a>
             </button>
-            <p className="regular-text centerText">
+            <p className="regular-text center-text">
               ❤️ Namaste React 🚀 from Zero to Hero by{" "}
               <span>
                 <a

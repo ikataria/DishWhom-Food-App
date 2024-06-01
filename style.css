@@ -46,10 +46,15 @@ a{
   --light-grey: #575757;
   --dark-grey: #545454;
   --light-gray: rgba(2, 6, 12, 0.6);
+  --lightest-grey: #f9f9f9;
   --orange: #d97919;
   --light-orange: #ffaf60;
   --dark-orange: #c26100;
   --dark-red: #f70000;
+  --light-pink: #e9e4e4;
+
+  --font-family: "Quicksand", sans-serif;
+
 }
 
 /* || UTILITY CLASSES */
@@ -74,12 +79,32 @@ a{
   border-radius: 8px;
 }
 
-.centerText {
+.center-text {
   text-align: center;
 }
 
-.largeText {
+.large-text {
   font-size: 20px;
+  color: var(--dark-grey);
+}
+
+.regular-text{
+  color: var(--dark-grey);
+  font-size: 18.72px
+}
+
+.small-text{
+  color: var(--light-grey);
+  font-size: 17px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+}
+
+.x-small-text{
+  color: var(--light-grey);
+  font-size: 15px !important;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 100;
 }
 
 html {
@@ -113,18 +138,6 @@ html {
 .heading-main{
   font-weight: 500;
   margin: 5px;
-}
-
-.regular-text{
-  color: var(--dark-grey);
-  font-size: 18.72px
-}
-
-.small-text{
-  color: var(--light-grey);
-  font-size: 17px;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 400;
 }
 
 .shadow-box-inset{
@@ -461,13 +474,150 @@ p {
   font-style: italic;
 }
 
-.about-container-image{
-  /* width: 45%; */
+/* Contact Page */
+/* .contact-container{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 40px auto;
 }
 
-/* Contact Page */
-.container-container{
-  
+.contact-container-image{
+  width: 35%;
+  height: auto;
+}
+
+.form-container{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 60%;
+}
+
+.form-container h3{
+  font-size: 50px;
+  font-weight: 400;
+  color: var(--dark-grey);
+  margin: 35px 0 20px 0;
+}
+
+.contact-form label, input{
+  display: inline;
+}
+
+.contact-form input{
+  width: 100%;
+  display: inline;
+  margin-bottom: 20px;
+} */
+
+/* --------------------------- */
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.contact-container-image {
+  margin-top: 150px;
+  flex: 1;
+  max-width: 40%;
+  overflow: hidden;
+}
+
+.contact-container-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 0 0 10px;
+  object-fit: cover;
+}
+
+.form-container {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container h3 {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--dark-orange);
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--dark-grey);
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--lightest-grey);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--orange);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--dark-orange);
+}
+
+.contact-hidden-msg{
+  margin-top: 20px
+}
+
+/* Error Page */
+.error-container{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--light-pink);
+}
+
+.error-img img{
+  margin-top: 150px;
+  border-radius: 40px;
+}
+
+.error-text {
+  margin-bottom: 45px;
+}
+
+.error-text h3, p {
+  font-size: 2rem
 }
 
 /* || FOOTER */
@@ -488,43 +638,26 @@ p {
 }
 
 /* || MEDIA QUERIES */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-container-image, .form-container {
+    max-width: 100%;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .contact-form button {
+    font-size: 16px;
+  }
+}
+
 @media screen and (min-width: 576px) {
   body {
     /* background-color: aliceblue */
   }
 }
-
-/************************************ Assignment 3 css below ************************************/
-/* .header{
-    margin: 2px;
-    border: 2px solid black;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo-container, .search-container, .userIcon-container{
-    padding: 5px;
-}
-
-.logo{
-    width: 100px;
-    border-radius: 50%;  
-}
-
-.userIcon{
-    width: 100px;;
-}
-
-
-.search-container{
-    display: flex;
-    width: 30%;
-}
-
-.searchBar{
-    height: 50px;
-    border-radius: 15px;
-    margin-right: 5px;
-    width: 100%;
-} */
