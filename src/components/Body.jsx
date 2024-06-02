@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
-import { restaurantListStatic } from "../utils/mockData";
 import { RES_LIST_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 
@@ -16,11 +16,11 @@ const Body = () => {
     const resData = await fetch(RES_LIST_URL);
     const resJsonObj = await resData.json();
 
-    console.log(
-      "resObj updated>>",
-      resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    // console.log(
+    //   "resObj updated>>",
+    //   resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants
+    // );
 
     setRestaurantList(
       resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
@@ -82,9 +82,12 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {filteredRest.map((resObj, index) => {
-          return <RestaurantCard key={resObj.info.id} resData={resObj?.info} />;
-        })}
+        {filteredRest.map((resObj, index) =>  (
+            <Link key={resObj.info.id} to={"/restaurants/" + resObj?.info?.id}>
+              <RestaurantCard resData={resObj?.info} />;
+            </Link>
+          )
+        )}
       </div>
     </div>
   );

@@ -9,10 +9,11 @@ import {
 
 import Header from "./Headers";
 import Body from "./Body";
-import Footer from "./Footer";
-import Contact from "./Contact";
+import RestaurantMenu from "./RestaurantMenu";
 import About from "./About";
+import Contact from "./Contact";
 import Error from "./Error";
+import Footer from "./Footer";
 
 // Home Page - AppLayout
 const AppLayout = () => {
@@ -46,9 +47,13 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu/>
       }
-    ],
-  },
+    ]
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
