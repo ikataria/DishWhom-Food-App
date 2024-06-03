@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LOCAL_LOGO  from "../utils/images/DishwhomLogo.png";
+import LOCAL_LOGO from "../utils/images/DishwhomLogo.png";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
@@ -9,34 +9,44 @@ const Header = () => {
     <div className="header">
       <div className="header-container">
         <div className="logo-container">
-          <img
-            src={LOCAL_LOGO}
-            alt="logo"
-            className="logo"
-            width="307px"
-            height="206px"
-          />
+          <Link to="/">
+            <img
+              src={LOCAL_LOGO}
+              alt="logo"
+              className="logo"
+              width="307px"
+              height="206px"
+            />
+          </Link>
         </div>
         <div className="nav-items-container">
           <ul className="nav-items regular-text">
             <li>
-              <Link to="/">Home</Link></li>
+              <Link to="/">Home</Link>
+            </li>
             <li>
-              <Link to="/about">About</Link></li>
+              <Link to="/about">About</Link>
+            </li>
             <li>
               <Link to="/contact">Contact</Link>
             </li>
             <li className="cart">
-            🛒
+              <i className="fa-solid fa-cart-shopping"></i>
             </li>
-            {/* <li>
-              <Link to="/cart">🛒Cart</Link>
-            </li> */}
-            
-            <button className="login-btn" onClick={()=>{
-              loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login")  
-            }}>{loginBtn}</button>
-            
+            <li className="login-btn-wrapper">
+              <Link to="/login">
+                <button
+                  className="login-btn"
+                  onClick={() => {
+                    loginBtn === "Login"
+                      ? setLoginBtn("Logout")
+                      : setLoginBtn("Login");
+                  }}
+                >
+                  {loginBtn}
+                </button>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

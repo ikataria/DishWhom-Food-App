@@ -14,6 +14,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Error from "./Error";
 import Footer from "./Footer";
+import Login from "./Login";
 
 // Home Page - AppLayout
 const AppLayout = () => {
@@ -51,6 +52,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu/>
+      },
+      {
+        path: "/login",
+        element: <Login />,
       }
     ]
   }
