@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
-import { RES_LIST_URL } from "../utils/constants";
+import { RES_LIST_URL, RES_LIST_KEY } from "../utils/constants";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
@@ -16,21 +16,26 @@ const Body = () => {
     const resData = await fetch(RES_LIST_URL);
     const resJsonObj = await resData.json();
 
-    // console.log(
-    //   "resObj updated>>",
-    //   resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-    //     ?.restaurants
+      // Query for RES_INFO
+      const resListNestedObj = resJsonObj.data.cards.find(
+        (ele) => ele?.card?.card?.["@type"] === RES_LIST_KEY
+      );
+
+    console.log(
+      "resObj updated>>",resListNestedObj
+    );
+
+    setRestaurantList(resListNestedObj?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRest(resListNestedObj?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+
+    // setRestaurantList(
+    //   resJsonObj?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     // );
 
-    setRestaurantList(
-      resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-
-    setFilteredRest(
-      resJsonObj?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    // setFilteredRest(
+    //   resJsonObj?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants
+    // );
 
     // const moreData = await fetch(
     //   "https://www.swiggy.com/dapi/restaurants/list/update",
@@ -81,14 +86,16 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="res-container">
+      {filteredRest === undefined || filteredRest?.length === 0 ? (<Shimmer/>) : (
+        <div className="res-container">
         {filteredRest.map((resObj, index) =>  (
-            <Link key={resObj.info.id} to={"/restaurants/" + resObj?.info?.id}>
+          <Link key={resObj.info.id} to={"/restaurants/" + resObj?.info?.id}>
               <RestaurantCard resData={resObj?.info} />
             </Link>
           )
         )}
       </div>
+        ) }
     </div>
   );
 };
