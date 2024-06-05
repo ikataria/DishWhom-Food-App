@@ -2,6 +2,8 @@ import dev_pic from "../utils/images/mohitkataria-pic.jpg";
 import burgerImage from "../utils/images/burgerImage.png";
 import { useState } from "react";
 
+import Profile from "./ProfileClass";
+
 const About = () => {
   let [profileVisibility, setProfileVisibility] = useState(true);
   let [btnTxt, setBtnTxt] = useState("Hide Profile");
@@ -117,6 +119,9 @@ const About = () => {
           <img src={burgerImage} alt="Burger Image" width="466" height="324" />
         </div>
       </div>
+
+      {/* Profile class-based component - render*/}
+      {/* <Profile/> */}
     </div>
   );
 };
