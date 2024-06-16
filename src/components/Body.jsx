@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
-import { RES_LIST_URL, RES_LIST_KEY } from "../utils/constants";
+import { RES_LIST_URL, RES_LIST_KEY, RES_LIST_RES_OBJ_KEY } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import Offline from "./Offline";
+
+import useOnlineStatus from "../utils/customHooks/useOnlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -17,13 +20,22 @@ const Body = () => {
     const resJsonObj = await resData.json();
 
       // Query for RES_INFO
-      const resListNestedObj = resJsonObj.data.cards.find(
-        (ele) => ele?.card?.card?.["@type"] === RES_LIST_KEY
+      const resListNestedObj = resJsonObj.data.cards.find((ele) =>{
+        if(ele?.card?.card?.["@type"] === RES_LIST_KEY){
+            let infoWithStyleObj = ele?.card?.card?.gridElements?.infoWithStyle;
+            if (infoWithStyleObj?.["@type"] === RES_LIST_RES_OBJ_KEY){
+              return ele 
+            } 
+          // console.log('search Arr: ', ele?.card?.card?.gridElements?.infoWithStyle?.["@type"] === RES_LIST_RES_OBJ_KEY)
+
+        }
+        
+      } 
       );
 
-    console.log(
-      "resObj updated>>",resListNestedObj
-    );
+    // console.log(
+    //   "resObj updated>>",resListNestedObj?.card?.card
+    // );
 
     setRestaurantList(resListNestedObj?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRest(resListNestedObj?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -58,6 +70,16 @@ const Body = () => {
     // console.log('useEffect hook called');
     fetchData();
   }, []);
+
+  
+  console.log(`useOnlineStatus:`, useOnlineStatus())
+  const isOnline = useOnlineStatus();
+  if(!isOnline){
+    return (
+      <Offline/>
+    )
+  }
+
 
   return restaurantList == "undefined" && restaurantList.length == 0 ? (
     <Shimmer />

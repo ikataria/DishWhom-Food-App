@@ -1,61 +1,11 @@
-import {
-  RES_ID_URL,
-  RES_INFO_KEY,
-  RES_MENU_LIST_KEY,
-  RES_MENU_NESTED_LIST_KEY,
-  RES_MENU_MAIN_IMG_URL,
-} from "../utils/constants";
-import { useState, useEffect } from "react";
+import { RES_MENU_MAIN_IMG_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../utils/customHooks/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  // const [resInfo, setResInfo] = useState({});
-  const [resInfo, setResInfo] = useState(null);
-  const [menuItems, setMenuItems] = useState([]);
   const { resId } = useParams();
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const fetchRawData = await fetch(RES_ID_URL + resId);
-    const fetchedJson = await fetchRawData.json();
-
-    // Query for RES_INFO
-    const resInfoNestedObj = fetchedJson.data.cards.find(
-      (ele) => ele?.card?.card?.["@type"] === RES_INFO_KEY
-    );
-    const resInfoObj = resInfoNestedObj.card.card?.info;
-
-    // Query for RES_MENU_ITEMS
-    const groupedCardObj = fetchedJson.data.cards.filter((e) => e?.groupedCard);
-    // console.log("groupedCardObj:", groupedCardObj)
-    const resMenuCategoryObj =
-      groupedCardObj[0].groupedCard?.cardGroupMap?.REGULAR.cards.find((ele) => {
-        if (ele.card.card["@type"] === RES_MENU_LIST_KEY) {
-          return ele;
-        } else if (ele.card.card["@type"] === RES_MENU_NESTED_LIST_KEY) {
-          return ele;
-        }
-      });
-
-    console.log("resMenuCategoryObj:", resMenuCategoryObj);
-    // const resItemCardsArr = resMenuCategoryObj?.card?.card?.itemCards;
-    let resItemCardsArr = null;
-    if (resMenuCategoryObj.card.card.itemCards) {
-      resItemCardsArr = resMenuCategoryObj.card.card.itemCards;
-    } else if (resMenuCategoryObj.card.card.categories[0].itemCards) {
-      resItemCardsArr = resMenuCategoryObj.card.card.categories[0].itemCards;
-    }
-
-    // setResInfo({ ...resInfoObj });
-    setResInfo(resInfoObj);
-    setMenuItems([...resItemCardsArr]);
-    // console.log("resInfo", resInfo);
-    // console.log("menuItems>", menuItems);
-  };
+  const { resInfo, menuItems } = useRestaurantMenu(resId);
 
   return !resInfo ? (
     <Shimmer />

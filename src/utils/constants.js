@@ -6,6 +6,7 @@ export const RES_ID_URL = "https://corsproxy.io/?https://www.swiggy.com/dapi/men
 // -------- Swiggy Key types -------- 
 // This key have all the restaurants list from specific area like Bengaluru
 export const RES_LIST_KEY = "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget";
+export const RES_LIST_RES_OBJ_KEY = "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle";
 export const RES_INFO_KEY = "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
 export const RES_MENU_LIST_KEY = "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
 export const RES_MENU_NESTED_LIST_KEY = "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory";
