@@ -2,10 +2,13 @@ import { RES_MENU_MAIN_IMG_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/customHooks/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const { resInfo, menuItems } = useRestaurantMenu(resId);
+  const { resInfo, menuCategories } = useRestaurantMenu(resId);
+
+  // console.log("menuCategories", menuCategories)
 
   return !resInfo ? (
     <Shimmer />
@@ -36,23 +39,10 @@ const RestaurantMenu = () => {
       <div className="res-menu-body-container">
         <div className="res-menu-body">
           <div className="res-menu-recommended">
-            <h4>Recommended</h4>
-            <p>{menuItems.length} Items</p>
+            {menuCategories.map((category, index) => <RestaurantCategory key={index} singleCategory={category?.card?.card} />
+            )}
           </div>
 
-          {menuItems.map((e) => (
-            <div className="res-menu-dish-details-wrapper">
-              <div className="res-menu-dish-details">
-                <h4>{e.card.info.name}</h4>
-                <h5>Rs. {Math.round(e.card.info.price / 100)} </h5>
-                <p>{e.card.info.description}</p>
-              </div>
-              <div className="res-menu-main-img">
-                <img src={RES_MENU_MAIN_IMG_URL + e.card.info.imageId} alt="" />
-                <button className="btn">ADD</button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
