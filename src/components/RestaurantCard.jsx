@@ -7,6 +7,7 @@ const RestaurantCard = (props) => {
   const { slaString: deliveryTime, lastMileTravelString: distance } =
     resData?.sla;
 
+
   return (
     <div className="res-card">
       <img

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import LOCAL_LOGO from "../utils/images/DishwhomLogo.png";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="header">
@@ -19,6 +22,13 @@ const Header = () => {
             />
           </Link>
         </div>
+
+        <div>
+          <h4 className="mt-2 font-normal capitalize">
+            {loggedInUser ? "Welcome " + loggedInUser  : ""}  {" "}
+          </h4>
+        </div>
+
         <div className="nav-items-container">
           <ul className="nav-items regular-text">
             <li>
@@ -37,13 +47,14 @@ const Header = () => {
               <Link to="/login">
                 <button
                   className="login-btn"
-                  onClick={() => {
-                    loginBtn === "Login"
-                      ? setLoginBtn("Logout")
-                      : setLoginBtn("Login");
-                  }}
+                  // onClick={() => {
+                  //   loginBtn === "Login"
+                  //     ? setLoginBtn("Logout")
+                  //     : setLoginBtn("Login");
+                  // }}
                 >
-                  {loginBtn}
+                  {/* {loginBtn} */}
+                  Welcome
                 </button>
               </Link>
             </li>

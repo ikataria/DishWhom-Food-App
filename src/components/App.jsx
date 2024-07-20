@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -15,17 +15,32 @@ import Contact from "./Contact";
 import Error from "./Error";
 import Footer from "./Footer";
 import Login from "./Login";
+import UserContext from "../utils/UserContext";
 
-const LazyComponentAbout = lazy(() => import('./About'));
+const LazyComponentAbout = lazy(() => import("./About"));
 
 // Home Page - AppLayout
 const AppLayout = () => {
+  const [userInfo, setUserInfo] = useState();
+
+  // Dummy Authentication Logic
+  useEffect(()=> {
+    // Make an API call & send username and password
+    const data = {
+      name: ""
+    }
+    setUserInfo(data.name);
+  }, [])
+
+
   return (
-    <div className="AppLayout AppLayout-wrapper">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{loggedInUser: userInfo, setUserInfo}}>
+      <div className="AppLayout AppLayout-wrapper">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -33,7 +48,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <Error/>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -49,20 +64,22 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <Suspense fallback={<h1>Loading...</h1>}>
-          <LazyComponentAbout/>
-        </Suspense>,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <LazyComponentAbout />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurants/:resId",
-        element: <RestaurantMenu/>
+        element: <RestaurantMenu />,
       },
       {
         path: "/login",
         element: <Login />,
-      }
-    ]
-  }
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
