@@ -2,11 +2,16 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import LOCAL_LOGO from "../utils/images/DishwhomLogo.png";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 
   const { loggedInUser } = useContext(UserContext);
+
+  const cartItems = useSelector((store) => {
+    return store.cart.items;
+  });
 
   return (
     <div className="header">
@@ -25,7 +30,7 @@ const Header = () => {
 
         <div>
           <h4 className="mt-2 font-normal capitalize">
-            {loggedInUser ? "Welcome " + loggedInUser  : ""}  {" "}
+            {loggedInUser ? "Welcome " + loggedInUser : ""}{" "}
           </h4>
         </div>
 
@@ -41,7 +46,11 @@ const Header = () => {
               <Link to="/contact">Contact</Link>
             </li>
             <li className="cart">
-              <i className="fa-solid fa-cart-shopping"></i>
+              <Link to="/cart">
+                <i className="fa-solid fa-cart-shopping">
+                  ( {cartItems.length})
+                </i>
+              </Link>
             </li>
             <li className="login-btn-wrapper">
               <Link to="/login">

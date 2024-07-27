@@ -1,7 +1,14 @@
 import {RES_MENU_MAIN_IMG_URL} from "../utils/constants"
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/reduxToolkit/cartSlice";
 
 const ItemList = (props) => {
   const { categoryItems } = props;
+
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItems(item))
+  }
 
   return (
     <div>
@@ -17,7 +24,7 @@ const ItemList = (props) => {
               </div>
               <div className="res-menu-main-img">
                 <img src={RES_MENU_MAIN_IMG_URL + (category?.card?.info?.imageId || category?.itemCards?.[0].card?.info?.imageId)} alt="" />
-                <button className="btn">ADD</button>
+                <button className="btn" onClick={() => handleAddItem(category)}>ADD</button>
               </div>
             </div>
           ))}

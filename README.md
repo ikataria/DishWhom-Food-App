@@ -27,6 +27,13 @@ For production build use "npm run build"
  *  - Contact
  */
 
+# Redux Toolkit
+    - Install react-redux & @reduxjs/toolkit
+    - Build our store
+    - Connect store to our app
+    - Slice (cartSlice)
+    - Dispatch (Action)
+    - Selector
 
 <!-- Image Sources -->
 

@@ -16,6 +16,9 @@ import Error from "./Error";
 import Footer from "./Footer";
 import Login from "./Login";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/reduxToolkit/appStore";
+import Cart from "./Cart";
 
 const LazyComponentAbout = lazy(() => import("./About"));
 
@@ -34,6 +37,7 @@ const AppLayout = () => {
 
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser: userInfo, setUserInfo}}>
       <div className="AppLayout AppLayout-wrapper">
         <Header />
@@ -41,6 +45,7 @@ const AppLayout = () => {
         <Footer />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -69,6 +74,10 @@ const appRouter = createBrowserRouter([
             <LazyComponentAbout />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurants/:resId",
