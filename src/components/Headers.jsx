@@ -14,7 +14,7 @@ const Header = () => {
   });
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="header-container">
         <div className="logo-container">
           <Link to="/">
@@ -26,15 +26,18 @@ const Header = () => {
               height="206px"
             />
           </Link>
+          <button class="menu-button" tabindex="0">
+                <div class="menu-icon"></div>
+          </button>
         </div>
 
-        <div>
+        {/* <div>
           <h4 className="mt-2 font-normal capitalize">
-            {loggedInUser ? "Welcome " + loggedInUser : ""}{" "}
+            {loggedInUser ? "BONJOUR " + loggedInUser : ""}{" "}
           </h4>
-        </div>
+        </div> */}
 
-        <div className="nav-items-container">
+        <nav className="nav-items-container">
           <ul className="nav-items regular-text">
             <li>
               <Link to="/">Home</Link>
@@ -48,7 +51,7 @@ const Header = () => {
             <li className="cart">
               <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping">
-                  ( {cartItems.length})
+                   ({cartItems.length})
                 </i>
               </Link>
             </li>
@@ -63,15 +66,15 @@ const Header = () => {
                   // }}
                 >
                   {/* {loginBtn} */}
-                  Welcome
+                  WELCOME
                 </button>
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
       <hr />
-    </div>
+    </header>
   );
 };
 

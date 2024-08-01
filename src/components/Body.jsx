@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
 import { RES_LIST_URL, RES_LIST_KEY, RES_LIST_RES_OBJ_KEY } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import Offline from "./Offline";
+import UserContext from "../utils/UserContext";
 
 import useOnlineStatus from "../utils/customHooks/useOnlineStatus";
 
@@ -13,6 +14,9 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRest, setFilteredRest] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
+  const { loggedInUser } = useContext(UserContext);
+
 
   // FetchData f(n)
   const fetchData = async () => {
@@ -83,6 +87,11 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body-container">
+        <div>
+          <h4 className=" text-center m-2 font-normal capitalize">
+            {loggedInUser ? "Bonjour " + loggedInUser : ""}{" "}
+          </h4>
+        </div>
       <div className="search-container">
         <input
           className="search-input"
