@@ -98,7 +98,7 @@ const About = () => {
                 NamasteDev
               </a>
             </p>
-            <p className="highLightColorRed highLightColorRedMob">
+            <p className="text-red-500 text-sm center-text">
               #NamasteReact #NamasteJavascript
             </p>
           </div>
@@ -113,7 +113,7 @@ const About = () => {
             Excitement of <br />
             <strong className="highLightLine">Bold & Tasty Food</strong>
           </h1>
-          <p>"From breakfast to night's boom, tasty meals with Dishwhom 👊"</p>
+          <p className="center-text">"From breakfast to night's boom, tasty meals with Dishwhom 👊"</p>
         </div>
         <div className="about-container-image">
           <img src={burgerImage} alt="Burger Image" width="466" height="324" />

@@ -334,6 +334,7 @@ p {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
+  align-content: center;
   width: 80%;
   margin: 40px auto;
 }
@@ -342,6 +343,8 @@ p {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-evenly;
+  align-content: center;
+  
 }
 
 .profile-btn {
@@ -352,7 +355,7 @@ p {
 .profile-container-main {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .profile-container {
@@ -416,7 +419,7 @@ p {
 
 .repo-container {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   width: 50%;
   margin: 25px;
   padding: 25px;
@@ -772,6 +775,29 @@ p {
 }
 
 /* || MEDIA QUERIES */
+@media screen and (max-width: 1249px){
+  /* ------------- About Us Start ------------- */
+  
+  .about-container-main{
+    /* background-color: red; */
+  }
+
+  .profile-container-main{
+    width: 100%;
+  }
+
+  .profile-container{
+    width: 75%;
+  }
+
+  .repo-container{
+    width: 75%;
+  }
+
+  .about-container-content{
+    width: 100%;
+  }
+}
 
 @media screen and (min-width: 769px) {
   img {
@@ -841,9 +867,18 @@ p {
     border-radius: 10px;
     padding: 2px 5px;
   }
+
+  .about-container-content{
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+
+
+
   img {
     max-width: 80%;
     margin: 0 auto;
@@ -995,7 +1030,8 @@ p {
   }
 }
 
-@media (max-width: 650px){
+@media screen and (max-width: 650px){
+
     /* || HEADER */
     .header-container {
       /* width: 100%; */
@@ -1116,6 +1152,28 @@ p {
   nav a:focus {
     transform: scale(1.2);
     transition: all 0.3s;
+  }
+
+
+  /* ------------- About Us Start ------------- */
+
+  .about-container-content{
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .about-container-text h1 {
+    width: 90%;
+  margin: auto;
+  font-size: 40px;
+  line-height: 1.2em;
+  text-align: center;
+  }
+  
+  .highLightLine{
+    font-size: 0.9rem;
+    padding: 3px 20px;
+    text-align: center;
   }
   
 }
@@ -1299,6 +1357,13 @@ p {
   .offline-text h4 {
     font-size: 15px;
   }
+
+    /* ------------- About Us Start ------------- */
+
+    .about-container-text h1 {
+      font-size: 30px;
+    }
+    
 }
 
 @media screen and (max-width: 375px) {
@@ -1317,8 +1382,10 @@ p {
 
 /* ------------- About Us Start ------------- */
 .about-container-main {
-  width: 90%;
-  margin: 20px auto;
+  flex-flow: column nowrap;
+  width: 95%;
+  align-items: center;
+
 }
 
 .profile-btn {
@@ -1331,14 +1398,27 @@ p {
   height: 40px;
 }
 
+.profile-container-main{
+  justify-content: center;
+}
+
 .profile-container {
   width: 90%;
 }
 
-.profile-card{
+.repo-container{
+  width: 90%;
+  padding: 10px;
+}
+
+.about-container-content {
+  flex-flow: column nowrap;
+}
+
+/* .profile-card{
   width: 100%;
   margin: 10px auto 20px;
-}
+} */
 
 .mob-heading {
   font-size: 24px
@@ -1362,8 +1442,17 @@ p {
 
 
 .about-container-text h1 {
-  font-size: 35px;
-  line-height: 1.4em;
+  font-size: 30px;
+  line-height: 1.2em;
+  width: 80%;
+  margin: auto;
+
+}
+
+.highLightLine{
+  font-size: 0.9rem;
+  padding: 3px 20px;
+  text-align: center;
 }
 
 /* ------------- About Us Ends ------------- */
