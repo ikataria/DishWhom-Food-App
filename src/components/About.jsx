@@ -26,7 +26,7 @@ const About = () => {
         {profileVisibility && (<div className="profile-container-main" id="profile-container-main">
           <div className="profile-container shadow-box-inset">
             <div className="profile-card">
-              <h3 className="heading-main">About Me</h3>
+              <h3 className="heading-main mob-heading">About Me</h3>
               <img
                 src={dev_pic}
                 alt="Developer pic"
@@ -35,7 +35,7 @@ const About = () => {
                 height="787px"
               />
               <p className="regular-text">Mohit Kataria</p>
-              <p className="small-text">
+              <p className="small-text mob-small-text">
                 MongoDb | Express.js | React.js | Node.js{" "}
               </p>
               <div className="social-media-container">
@@ -64,7 +64,7 @@ const About = () => {
             </div>
           </div>
           <div className="repo-container shadow-box-inset">
-            <h3 className="heading-main">
+            <h3 className="heading-main mob-heading">
               Dish<span className="highLightColor">Whom</span> App Github
               Repository
             </h3>
@@ -98,7 +98,7 @@ const About = () => {
                 NamasteDev
               </a>
             </p>
-            <p className="highLightColorRed">
+            <p className="highLightColorRed highLightColorRedMob">
               #NamasteReact #NamasteJavascript
             </p>
           </div>

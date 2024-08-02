@@ -329,7 +329,7 @@ p {
   border-radius: 10px;
 }
 
-/* About Us */
+/* ------------- About Us Start ------------- */
 .about-container-main {
   display: flex;
   flex-flow: column wrap;
@@ -488,6 +488,9 @@ p {
   font-family: "Quicksand", sans-serif;
   font-style: italic;
 }
+
+/* ------------- About Us Ends ------------- */
+
 
 /* Contact Page */
 /* .contact-container{
@@ -1312,8 +1315,59 @@ p {
     font-size: 7px;
   }
 
+/* ------------- About Us Start ------------- */
+.about-container-main {
+  width: 90%;
+  margin: 20px auto;
+}
 
-/* _____________________________________________ */
+.profile-btn {
+  margin: 20px auto;
+}
+
+.btn{
+  font-size: 17px;
+  font-weight: 600;
+  height: 40px;
+}
+
+.profile-container {
+  width: 90%;
+}
+
+.profile-card{
+  width: 100%;
+  margin: 10px auto 20px;
+}
+
+.mob-heading {
+  font-size: 24px
+}
+
+.mob-small-text{
+  font-size: 12px
+}
+
+.social-media-container {
+  width: 100%;
+}
+
+.repo-container {
+  width: 90%;
+}
+
+.highLightColorRed{
+  font-size: 1.2rem;
+}
+
+
+.about-container-text h1 {
+  font-size: 35px;
+  line-height: 1.4em;
+}
+
+/* ------------- About Us Ends ------------- */
+
 
   .logo {
     width: 100px;
