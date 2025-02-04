@@ -26,7 +26,7 @@ const Login = () => {
         <input
           type="name"
           name="name"
-          placeholder="Who we are welcoming ?"
+          placeholder="Whom are we welcoming today?"
           className="form-control inp_text"
           id="name"
           value={loggedInUser}

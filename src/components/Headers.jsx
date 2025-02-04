@@ -6,6 +6,11 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+  const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
 
   const { loggedInUser } = useContext(UserContext);
 
@@ -14,7 +19,7 @@ const Header = () => {
   });
 
   return (
-    <header className="header">
+    <header className={`header ${menuActive ? 'active' : ''}`}>
       <div className="header-container">
         <div className="logo-container">
           <Link to="/">
@@ -26,8 +31,8 @@ const Header = () => {
               height="206px"
             />
           </Link>
-          <button class="menu-button" tabindex="0">
-                <div class="menu-icon"></div>
+          <button className="menu-button" tabIndex="0" onClick={toggleMenu}>
+                <div className="menu-icon"></div>
           </button>
         </div>
 
@@ -37,7 +42,7 @@ const Header = () => {
           </h4>
         </div> */}
 
-        <nav className="nav-items-container">
+        <nav className={`nav-items-container ${menuActive ? 'active' : ''}`}>
           <ul className="nav-items regular-text">
             <li>
               <Link to="/">Home</Link>

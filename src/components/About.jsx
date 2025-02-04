@@ -9,7 +9,7 @@ const About = () => {
   let [btnTxt, setBtnTxt] = useState("Hide Profile");
 
   const toggleVisibility = () => {
-    btnTxt === "Show Profile" ? setBtnTxt("Hide Profile") : setBtnTxt("Show Profile")
+    btnTxt === "Show Developer Profile" ? setBtnTxt("Hide Profile") : setBtnTxt("Show Developer Profile")
     setProfileVisibility(!profileVisibility);
   };
 
