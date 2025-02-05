@@ -1,7 +1,7 @@
 ❤️ Namaste React 🚀
 
-This assignment is from Namaste React Course by though by Akshay Saini.
-I made this DishWhom Food 🍗 app from scratch using React.js along with bundle called Parcel. 
+This assignment is from the Namaste React Course by Akshay Saini.
+I made this DishWhom Food 🍗 app from scratch using React.js along with a bundle called Parcel. 
 
 <!-- How to run app -->
 You can launch the app by just typing the command "npm run start" in the terminal.
